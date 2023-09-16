@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title></title>
+    <style>
+      body {
+        background-color: black;
+      }
+      .search {
+        width: 30%;
+        height: 30px;
+        margin: auto;
+        position: absolute;
+        left: 0;
+        border: 1px solid white;
+        display: flex;
+      }
+
+      .searchTerm {
+        width: 50%;
+        outline: none;
+        color: #9DBFAF;
+        background-color: black;
+        border: none;
+        flex: auto;
+        align-items: center;
+      }
+      .searchTerm:focus{
+        color: white;
+      }
+      .searchButton {
+        border: none;
+        color: #fff;
+        border-radius: 0 5px 5px 0;
+        cursor: pointer;
+        font-size: 20px;
+        flex: initial;
+        justify-content: flex-end;
+        align-content: center;
+        padding: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="search">
+      <input type="text" class="searchTerm" placeholder="请输入名称/位置"></input>
+      <input type="image" class="searchButton" src="search.png"></input>
+    </div>
+  </body>
+</html>
