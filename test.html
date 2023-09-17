@@ -3,94 +3,68 @@
 <head>
 <title>Test</title>
 <style>
-  body {
-    width: 400px;
-    background-color: black;
-    color: white;
-  }
 
-  .table {
-    display: flex;
-  }
+table {
+  border-collapse: collapse;
+}
 
-  #info {
-    flex: auto;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: 50px;
-    white-space: nowrap;
-    overflow-x: auto;
-    overflow-y: hidden;
-    text-align: center;
-    font-size: 70%;
-    padding-left: 5px;
-    padding-right: 5px;
-  }
+th {
+  background-color: gray;
+}
 
-  #op {
-    width: 50px;
-    flex: none;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-auto-rows: 50px;
-    white-space: nowrap;
-    text-align: center;
-    box-shadow: inset 10px 0px 10px rgba(255, 255, 255, 0.5);
-    font-size: 70%;
-    overflow-y: hidden;
-  }
-
-  .table .th {
-    background-color: gray;
-  }
-
-  .table .td {
-    margin-left: 5px;
-  }
-  .table .td,
-  .table .th {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+td,th {
+  border: 1px dashed black;
+  text-align: center;
+  padding: 5px;
+}
 </style>
 </head> 
 <body>
-  <div class="table">
-    <div id="info">
-      <div class="th">设备名称</div>
-      <div class="th">设备位置</div>
-      <div class="th">告警类别</div>
-      <div class="th">告警时间</div>
-      <div class="td">某某某某设备</div>
-      <div class="td">某某某某楼梯口大数据扣篮大赛</div>
-      <div class="td">某某某某火警</div>
-      <div class="td">2022-06-22</div>
-      <div class="td">某某某某设备</div>
-      <div class="td">某某某某楼梯口</div>
-      <div class="td">某某某某火警</div>
-      <div class="td">2022-06-22</div>
-      <div class="td">某某某某设备</div>
-      <div class="td">某某某某楼梯口</div>
-      <div class="td">某某某某火警</div>
-      <div class="td">2022-06-22</div>
-      <div class="td">某某某某设备</div>
-      <div class="td">某某某某楼梯口</div>
-      <div class="td">某某某某火警</div>
-      <div class="td">2022-06-22</div>
-      <div class="td">某某某某设备</div>
-      <div class="td">某某某某楼梯口</div>
-      <div class="td">某某某某火警</div>
-      <div class="td">2022-06-22</div>
-    </div>
-    <div id="op">
-      <div class="th">操作</div>
-      <div class="td">啊</div>
-      <div class="td">啊</div>
-      <div class="td">啊</div>
-      <div class="td">啊</div>
-      <div class="td">啊</div>
-    </div>
-  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Paper Title</th>
+        <th>Author</th>
+        <th>Journal</th>
+        <th>Web Link</th>
+        <th>Finish Reading the</th>
+        <th>Your Reading has benefited your</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>In Search of an Understandable Consensus Algorithm</td>
+        <td>Diego Ongaro and John Ousterhout</td>
+        <td></td>
+        <td>https://raft.github.io/raft.pdf</td>
+        <td>Entire Paper</td>
+        <td>Paper Writing</td>
+      </tr>
+      <tr>
+        <td>The WebSocket Protocol</td>
+        <td>IETF</td>
+        <td></td>
+        <td>https://datatracker.ietf.org/doc/html/rfc6455</td>
+        <td>Entire Paper</td>
+        <td>Paper Writing</td>
+      </tr>
+      <tr>
+        <td>Bigtable: A Distributed Storage System for Structured Data</td>
+        <td>Fay Chang, Jeffrey Dean, Sanjay Ghemawat, Wilson C. Hsieh, Deborah A. Wallach, Mike Burrows, Tushar Chandra, Andrew Fikes, Robert E. Gruber</td>
+        <td></td>
+        <td>https://static.googleusercontent.com/media/research.google.com/zh-CN//archive/bigtable-osdi06.pdf</td>
+        <td>Abstract</td>
+        <td>Paper Writing</td>
+      </tr>
+      <tr>
+        <td>MapReduce: Simplified Data Processing on Large Clusters</td>
+        <td>Jeffrey Dean and Sanjay Ghemawat</td>
+        <td></td>
+        <td>https://static.googleusercontent.com/media/research.google.com/zh-CN//archive/mapreduce-osdi04.pdf</td>
+        <td>Entire Paper</td>
+        <td>Paper Writing</td>
+      </tr>
+    </tbody>
+  </table>
 </body>
 </html>

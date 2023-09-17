@@ -1,8 +1,7 @@
 body {
   background-color: rgb(0, 4, 22);
   color: white;
-  height: 100vh;
-  width: 100vw;
+  height: 95vh;
   display: flex;
   flex-direction: column;
 }
@@ -75,11 +74,12 @@ body > .main {
   height: 100%;
   width: 25%;
   justify-content: flex-start;
-  display: block;
+  display: flex;
+  flex-direction: column;
 }
 
-div#videos {
-  height: 50%;
+#videos {
+  flex: 1;
   display: flex;
   flex-direction: column;
   border: 1px dashed white;
@@ -146,13 +146,14 @@ div#videos > .searchBox {
   
 } 
 #videos-grid > .grid-video {
-  height: 70px;
-  background-color: white;
+  height: 100px;
+  background-color: rgba(255, 255, 255, 0.1);
   border: none;
   padding: 0;
 }
 
 #warnings {
+  flex: 1;
   display: flex;
   flex-direction: column;
   height: 50%;
@@ -162,6 +163,7 @@ div#videos > .searchBox {
 #warnings .catalog {
     display: flex;
     height: 40px;
+    flex: none;
 }
 #warnings .catalog .category {
     font-size: 70%;
@@ -189,6 +191,7 @@ div#videos > .searchBox {
 
 #warning-info {
     display: flex;
+    flex: none;
 }
 
 #warning-info .warning-table {
@@ -235,27 +238,34 @@ div#videos > .searchBox {
     height: 50%;
 }
 
+.empty-flex-div {
+  flex: auto;
+}
+
 #system {
   flex: auto;
   display: flex;
   flex-direction: column;
   border: 1px dashed white;
   padding: 5px;
+  width: 500px;
+  margin-left: 10px;
 }
 
 #system .title-bar {
   height: 20px;
   flex: none;
   display: flex;
+  margin-bottom: 5px;
 }
 #system .title-bar .banner {
   display: flex;
   height: 100%;
-  width: 100%;
-  flex: none;
+  flex: auto;
   margin-bottom: 10px;
   padding-bottom: 4px;
   border-bottom: 1px solid white;
+  justify-content: flex-start;
 }
 #system .title-bar .banner img {
   height: 100%;
@@ -271,25 +281,239 @@ div#videos > .searchBox {
   font-size: 20px;
   line-height: 100%;
 }
+
+#system .title-bar #device-pic {
+  display: flex;
+  height: 100%;
+  flex: none;
+  margin-bottom: 10px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid white;
+  justify-content: flex-end;
+}
+#system .title-bar #device-pic img {
+  height: 100%;
+  width: 20px;
+  flex: initial;
+  justify-content: flex-start;
+  object-fit: contain;
+  margin-right: 10px;
+}
+#system .title-bar #device-pic .title {
+  height: 100%;
+  flex: none;
+  font-size: 80%;
+  line-height: 100%;
+}
+
 #system-catalog {
   height: 60px;
-  flex: auto;
+  flex: none;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  grid-auto-rows: 30px;
-  font-size: 70%;
+  grid-auto-rows: 60px;
+  font-size: 60%;
+  white-space: nowrap;
+  background-color: gray;
+  border: none;
 }
+
 #system-catalog .system-entry {
   display: flex;
   align-items: center;
   justify-content: center;
 }
+#elec-fire {
+  background-color: black;
+  border-top: 1px solid white;
+}
 
 #system-info {
+  margin-top: 10px;
   height: 80px;
   flex: none;
   display: flex;
 }
+#system-name {
+  width: 40%;
+  margin: auto;
+  top: 0; bottom: 0;
+  position: relative;
+  left: 30px;
+  font-size: 150%;
+}
+#system-data {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 100%;
+  flex: auto;
+}
 
+#system-detail {
+  flex: auto;
+}
+#system-detail .banner {
+  flex: auto;
+  width: 100%;
+}
 
+#system-selection {
+  width: 200px;
+  margin-left: 20px;
+  color: white;
+  background-color: black;
+}
+
+#system-detail .banner input {
+  margin-left: 20px;
+}
+
+#system-pannel {
+  flex: auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: auto;
+  margin-top: 10px;
+  gap: 5px;
+}
+
+#system-pannel .device-cell {
+  border: 1px dashed aqua;
+}
+#system-pannel .device-cell .banner {
+  display: flex;
+  height: 25%;
+  margin-bottom: 10px;
+}
+
+#system-pannel .device-cell .banner .cell-title {
+  flex: auto;
+}
+#system-pannel .device-cell .banner .cell-title .serial-number {
+  font-size: 60%;
+  color: gray;
+}
+#system-pannel .device-cell .banner .cell-title .device-location {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 80%;
+  font-size: 70%;
+}
+#system-pannel .device-cell .banner .device-status-icon {
+  height: 80%;
+  aspect-ratio: 1/1;
+  flex: initial;
+  justify-content: flex-end;
+  align-items: center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+#system-pannel .warning-device .banner .device-status-icon {
+  background-image: url("status_warning.png");
+}
+#system-pannel .normal-device .banner .device-status-icon {
+  background-image: url("status_normal.png");
+}
+#system-pannel .offline-device .banner .device-status-icon {
+  background-image: url("status_offline.png");
+}
+#system-pannel .device-cell .banner .device-status-icon img {
+  height: 70%;
+  object-fit: contain;
+}
+
+#system-pannel .device-cell .status-pannel {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 40px;
+  gap: 5px;
+}
+
+#system-pannel .device-cell .status-pannel .cell {
+  background-size: 100% 50%;
+  background-repeat: no-repeat;
+}
+#system-pannel .device-cell .status-pannel .normal-cell {
+  background-image: url("cell_normal.png");
+}
+#system-pannel .device-cell .status-pannel .warning-cell {
+  background-image: url("cell_warning.png");
+}
+#system-pannel .device-cell .status-pannel .name {
+  font-size: 50%;
+  color: gray;
+  position: relative;
+  left: 5px;
+  margin-bottom: 3px;
+}
+#system-pannel .device-cell .status-pannel .value {
+  font-size: 80%;
+  position: relative;
+  left: 5px;
+}
+#system-pannel .device-cell .status-pannel .warning-cell .value {
+  color: red;
+}
+#system-pannel .device-cell .status-pannel .normal-cell .value {
+  color: white;
+}
+
+.page-switching {
+  flex: none;
+  justify-content: flex-end;
+
+  height: 30px;
+
+  display: flex;
+
+  font-size: 80%;
+}
+
+.page-switching .flip-page {
+  flex: auto;
+  justify-content: flex-end;
+  align-items: center;
+
+  display: flex;
+  margin-right: 20px;
+}
+
+.page-switching .flip-page .page-button {
+  aspect-ratio: 1/1;
+  height: 80%;
+  flex: none;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+.page-switching .flip-page #prev-page {
+  background-image: url("left_arrow.png");
+  margin-right: 10px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.page-switching .flip-page #next-page {
+  background-image: url("right_arrow.png");
+  background-color: rgba(255, 255, 255, 0.6);
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.page-switching .jump-page {
+  flex: none;
+  justify-content: flex-end;
+  align-items: center;
+  display: flex;
+}
+
+.page-switching .jump-page input {
+  width: 50px;
+  background-color: inherit;
+  border: 1px solid white;
+}
+.page-switching .jump-page input:focus {
+  color: white;
+}
+.page-switching .jump-page div {
+  margin-left: 10px;
+}
 

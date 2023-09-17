@@ -66,23 +66,23 @@
             <div class="th">告警时间</div>
             <div class="td">某某某某设备</div>
             <div class="td">某某某某楼梯口</div>
-            <div class="td">某某某某火警</div>
+            <div class="td">火警</div>
             <div class="td">2022-06-22</div>
             <div class="td">某某某某设备</div>
             <div class="td">某某某某楼梯口</div>
-            <div class="td">某某某某火警</div>
+            <div class="td">火警</div>
             <div class="td">2022-06-22</div>
             <div class="td">某某某某设备</div>
             <div class="td">某某某某楼梯口</div>
-            <div class="td">某某某某火警</div>
+            <div class="td">火警</div>
             <div class="td">2022-06-22</div>
             <div class="td">某某某某设备</div>
             <div class="td">某某某某楼梯口</div>
-            <div class="td">某某某某火警</div>
+            <div class="td">火警</div>
             <div class="td">2022-06-22</div>
             <div class="td">某某某某设备</div>
             <div class="td">某某某某楼梯口</div>
-            <div class="td">某某某某火警</div>
+            <div class="td">火警</div>
             <div class="td">2022-06-22</div>
           </div>
           <div class="warning-table" id="op-txt-table">
@@ -94,19 +94,34 @@
             <div class="td"><img src="文档.png"></img></div>
           </div>
         </div>
+        <div class="empty-flex-div"></div>
+        <div class="page-switching">
+          <div class="flip-page">
+            <div class="page-button" id="prev-page"></div>
+            <div class="page-index">1/3</div>
+            <div class="page-button" id="next-page"></div>
+          </div>
+          <div class="jump-page">
+            <div class="label">跳转</div>
+            <div class="page-search"><input type="search"></input></div>
+            <div class="label">页</div>
+          </div>
+        </div>
       </div>
     </div>
     <div id="system">
+
       <div class="title-bar">
         <div class="banner">
           <img src="icon.png"></img>
           <div class="title">消防系统</div>
         </div>
-        <div id="building-pic">
+        <div id="device-pic">
           <img src="设施部件图.png"></img>
           <div  class="title">设施部件图</div>
         </div>
       </div>
+
       <div id="system-catalog">
         <div class="system-entry" id="fire-auto-alarm">火灾自动报警系统</div>
         <div class="system-entry" id="elec-fire">电气火灾系统</div>
@@ -115,22 +130,360 @@
         <div class="system-entry" id="emergency-light-and-evacuation">消防应急照明和疏散指示系统</div>
         <div class="system-entry" id="emergency-broadcast">消防应急广播系统</div>
       </div>
-      <!--<div id="system-info">-->
-        <!--<div id="system-name">电气火灾系统</div>-->
-        <!--<div class="system-data" id="device-number">-->
-          <!--<div class="category">设备总数</div>-->
-          <!--<div class="number">66</div>-->
-        <!--</div>-->
-        <!--<div class="system-data" id="device-alarm-number">-->
-          <!--<div class="category">设备报警数</div>-->
-          <!--<div class="number">2</div>-->
-        <!--</div>-->
-        <!--<div class="system-data" id="offline-device-number">-->
-          <!--<div class="category">离线设备数</div>-->
-          <!--<div class="number">3</div>-->
-        <!--</div>-->
-      <!--</div>-->
+
+      <div id="system-info">
+        <div id="system-name">电气火灾系统</div>
+        <div id="system-data">
+          <div id="device-number">
+            <div class="category">设备总数</div>
+            <div class="number">66</div>
+          </div>
+          <div id="device-alarm-number">
+            <div class="category">设备报警数</div>
+            <div class="number">2</div>
+          </div>
+          <div id="offline-device-number">
+            <div class="category">离线设备数</div>
+            <div class="number">3</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="system-detail">
+        <div class="banner">
+          <select id="system-selection">
+            <option>某某某系统一</option>
+            <option>某某某系统二</option>
+            <option>某某某系统三</option>
+          </select>
+          <input type="radio" name="system" checked>全部</input>
+          <input type="radio" name="system">正常</input>
+          <input type="radio" name="system">报警</input>
+          <input type="radio" name="system">离线</input>
+        </div>
+
+        <div id="system-pannel">
+          <div class="device-cell offline-device">
+
+            <div class="banner">
+              <div class="cell-title">
+                <div class="serial-number">10034561223456</div>
+                <div class="device-location">设备位置有点长有点长有点长有点长有点长</div>
+              </div>
+              <div class="device-status-icon"></div>
+            </div>
+
+            <div class="status-pannel">
+              <div class="cell normal-cell">
+                <div class="name">A相电压</div>
+                <div class="value">234.8</div>
+              </div>
+              <div class="cell normal-cell">
+                <div class="name">B相电压</div>
+                <div class="value">230.2</div>
+              </div>
+              <div class="cell normal-cell">
+                <div class="name">C相电压</div>
+                <div class="value">234.8</div>
+              </div>
+              <div class="cell normal-cell">
+                <div class="name">A相电压</div>
+                <div class="value">234.8</div>
+              </div>
+              <div class="cell normal-cell">
+                <div class="name">B相电压</div>
+                <div class="value">230.2</div>
+              </div>
+              <div class="cell normal-cell">
+                <div class="name">C相电压</div>
+                <div class="value">234.8</div>
+              </div>
+            </div>
+
+          </div>
+          <div class="device-cell warning-device">
+
+            <div class="banner">
+              <div class="cell-title">
+                <div class="serial-number">10034561223456</div>
+                <div class="device-location">设备位置有点长有点长有点长有点长有点长</div>
+              </div>
+              <div class="device-status-icon"></div>
+            </div>
+
+            <div class="status-pannel">
+              <div class="cell normal-cell">
+                <div class="name">A相电压</div>
+                <div class="value">234.8</div>
+              </div>
+              <div class="cell warning-cell">
+                <div class="name">B相电压</div>
+                <div class="value">230.2</div>
+              </div>
+              <div class="cell normal-cell">
+                <div class="name">C相电压</div>
+                <div class="value">234.8</div>
+              </div>
+              <div class="cell normal-cell">
+                <div class="name">A相电压</div>
+                <div class="value">234.8</div>
+              </div>
+              <div class="cell normal-cell">
+                <div class="name">B相电压</div>
+                <div class="value">230.2</div>
+              </div>
+              <div class="cell normal-cell">
+                <div class="name">C相电压</div>
+                <div class="value">234.8</div>
+              </div>
+            </div>
+
+          </div>
+          <div class="device-cell warning-device">
+
+            <div class="banner">
+              <div class="cell-title">
+                <div class="serial-number">10034561223456</div>
+                <div class="device-location">设备位置有点长有点长有点长有点长有点长</div>
+              </div>
+              <div class="device-status-icon"></div>
+            </div>
+
+            <div class="status-pannel">
+              <div class="cell normal-cell">
+                <div class="name">A相电压</div>
+                <div class="value">234.8</div>
+              </div>
+              <div class="cell normal-cell">
+                <div class="name">B相电压</div>
+                <div class="value">230.2</div>
+              </div>
+              <div class="cell warning-cell">
+                <div class="name">C相电压</div>
+                <div class="value">234.8</div>
+              </div>
+              <div class="cell normal-cell">
+                <div class="name">A相电压</div>
+                <div class="value">234.8</div>
+              </div>
+              <div class="cell normal-cell">
+                <div class="name">B相电压</div>
+                <div class="value">230.2</div>
+              </div>
+              <div class="cell normal-cell">
+                <div class="name">C相电压</div>
+                <div class="value">234.8</div>
+              </div>
+            </div>
+
+          </div>
+          <div class="device-cell normal-device">
+
+            <div class="banner">
+              <div class="cell-title">
+                <div class="serial-number">10034561223456</div>
+                <div class="device-location">设备位置有点长有点长有点长有点长有点长</div>
+              </div>
+              <div class="device-status-icon"></div>
+            </div>
+
+            <div class="status-pannel">
+              <div class="cell normal-cell">
+                <div class="name">A相电压</div>
+                <div class="value">234.8</div>
+              </div>
+              <div class="cell normal-cell">
+                <div class="name">B相电压</div>
+                <div class="value">230.2</div>
+              </div>
+              <div class="cell normal-cell">
+                <div class="name">C相电压</div>
+                <div class="value">234.8</div>
+              </div>
+              <div class="cell normal-cell">
+                <div class="name">A相电压</div>
+                <div class="value">234.8</div>
+              </div>
+              <div class="cell normal-cell">
+                <div class="name">B相电压</div>
+                <div class="value">230.2</div>
+              </div>
+              <div class="cell normal-cell">
+                <div class="name">C相电压</div>
+                <div class="value">234.8</div>
+              </div>
+            </div>
+
+          </div>
+          <div class="device-cell normal-device">
+
+            <div class="banner">
+              <div class="cell-title">
+                <div class="serial-number">10034561223456</div>
+                <div class="device-location">设备位置有点长有点长有点长有点长有点长</div>
+              </div>
+              <div class="device-status-icon"></div>
+            </div>
+
+            <div class="status-pannel">
+              <div class="cell normal-cell">
+                <div class="name">A相电压</div>
+                <div class="value">234.8</div>
+              </div>
+              <div class="cell normal-cell">
+                <div class="name">B相电压</div>
+                <div class="value">230.2</div>
+              </div>
+              <div class="cell normal-cell">
+                <div class="name">C相电压</div>
+                <div class="value">234.8</div>
+              </div>
+              <div class="cell normal-cell">
+                <div class="name">A相电压</div>
+                <div class="value">234.8</div>
+              </div>
+              <div class="cell normal-cell">
+                <div class="name">B相电压</div>
+                <div class="value">230.2</div>
+              </div>
+              <div class="cell normal-cell">
+                <div class="name">C相电压</div>
+                <div class="value">234.8</div>
+              </div>
+            </div>
+
+          </div>
+          <div class="device-cell normal-device">
+
+            <div class="banner">
+              <div class="cell-title">
+                <div class="serial-number">10034561223456</div>
+                <div class="device-location">设备位置有点长有点长有点长有点长有点长</div>
+              </div>
+              <div class="device-status-icon"></div>
+            </div>
+
+            <div class="status-pannel">
+              <div class="cell normal-cell">
+                <div class="name">A相电压</div>
+                <div class="value">234.8</div>
+              </div>
+              <div class="cell normal-cell">
+                <div class="name">B相电压</div>
+                <div class="value">230.2</div>
+              </div>
+              <div class="cell normal-cell">
+                <div class="name">C相电压</div>
+                <div class="value">234.8</div>
+              </div>
+              <div class="cell normal-cell">
+                <div class="name">A相电压</div>
+                <div class="value">234.8</div>
+              </div>
+              <div class="cell normal-cell">
+                <div class="name">B相电压</div>
+                <div class="value">230.2</div>
+              </div>
+              <div class="cell normal-cell">
+                <div class="name">C相电压</div>
+                <div class="value">234.8</div>
+              </div>
+            </div>
+
+          </div>
+          <div class="device-cell normal-device">
+
+            <div class="banner">
+              <div class="cell-title">
+                <div class="serial-number">10034561223456</div>
+                <div class="device-location">设备位置有点长有点长有点长有点长有点长</div>
+              </div>
+              <div class="device-status-icon"></div>
+            </div>
+
+            <div class="status-pannel">
+              <div class="cell normal-cell">
+                <div class="name">A相电压</div>
+                <div class="value">234.8</div>
+              </div>
+              <div class="cell normal-cell">
+                <div class="name">B相电压</div>
+                <div class="value">230.2</div>
+              </div>
+              <div class="cell normal-cell">
+                <div class="name">C相电压</div>
+                <div class="value">234.8</div>
+              </div>
+              <div class="cell normal-cell">
+                <div class="name">A相电压</div>
+                <div class="value">234.8</div>
+              </div>
+              <div class="cell normal-cell">
+                <div class="name">B相电压</div>
+                <div class="value">230.2</div>
+              </div>
+              <div class="cell normal-cell">
+                <div class="name">C相电压</div>
+                <div class="value">234.8</div>
+              </div>
+            </div>
+
+          </div>
+          <div class="device-cell normal-device">
+
+            <div class="banner">
+              <div class="cell-title">
+                <div class="serial-number">10034561223456</div>
+                <div class="device-location">设备位置有点长有点长有点长有点长有点长</div>
+              </div>
+              <div class="device-status-icon"></div>
+            </div>
+
+            <div class="status-pannel">
+              <div class="cell normal-cell">
+                <div class="name">A相电压</div>
+                <div class="value">234.8</div>
+              </div>
+              <div class="cell normal-cell">
+                <div class="name">B相电压</div>
+                <div class="value">230.2</div>
+              </div>
+              <div class="cell normal-cell">
+                <div class="name">C相电压</div>
+                <div class="value">234.8</div>
+              </div>
+              <div class="cell normal-cell">
+                <div class="name">A相电压</div>
+                <div class="value">234.8</div>
+              </div>
+              <div class="cell normal-cell">
+                <div class="name">B相电压</div>
+                <div class="value">230.2</div>
+              </div>
+              <div class="cell normal-cell">
+                <div class="name">C相电压</div>
+                <div class="value">234.8</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="page-switching">
+        <div class="flip-page">
+          <div class="page-button" id="prev-page"></div>
+          <div class="page-index">1/3</div>
+          <div class="page-button" id="next-page"></div>
+        </div>
+        <div class="jump-page">
+          <div class="label">跳转</div>
+          <div class="page-search"><input type="search"></input></div>
+          <div class="label">页</div>
+        </div>
+      </div>
     </div>
+
   </div>
 </body>
 </html>
