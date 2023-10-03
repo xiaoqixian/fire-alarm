@@ -219,6 +219,7 @@ export default {
   flex-wrap: wrap;
   overflow: hidden;
   position: absolute;
+  z-index: 9;
   background-color: rgb(0, 4, 22);
 }
 .full-tab {

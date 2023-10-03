@@ -26,26 +26,34 @@ export default {
   display: flex;
 }
 .title {
-  flex: 1;
+  flex: 1.5;
+  position: relative;
   margin: auto;
   top: 0; 
   bottom: 0;
-  left: 30px;
+  padding-left: 30px;
   font-size: 150%;
+  white-space: nowrap;
+  color: rgb(71,105,248);
 }
 .description {
   flex: 1;
-  margin-top: 5px;
-  margin-bottom: 5px;
+  position: relative;
+  margin: auto;
+  top: 0; bottom: 0;
   padding-left: 10px;
 }
 .desc-line {
   color: gray;
   font-size: 50%;
   padding-left: 20px;
+  text-overflow: ellipsis;
 }
 .data {
   flex: 1;
+  position: relative;
+  margin: auto;
+  top: 0; bottom: 0;
 }
 .key,
 .value {

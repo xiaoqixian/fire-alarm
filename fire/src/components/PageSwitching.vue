@@ -55,19 +55,33 @@ export default {
     pageIndex: function(newVal) {
       this.prevPageDisabled = newVal == 1 ? true : false;
       this.nextPageDisabled = newVal == this.$props.totalPage ? true : false;
+    },
+    totalPage: function(newVal) {
+      //when totalPage is altered, it means new pages are inserted
+      //so rewind pageindex to 1
+      if (this.pageIndex == 1) {
+        this.prevPageDisabled = true;
+        this.nextPageDisabled = newVal == 1 ? true : false;
+      } else {
+        this.pageIndex = 1;
+      }
     }
   },
+  emits: ["jumpPage"],
   methods: {
     prevPage: function() {
       this.pageIndex--;
+      this.$emit("jumpPage", this.pageIndex);
     },
     nextPage: function() {
       this.pageIndex++;
+      this.$emit("jumpPage", this.pageIndex);
     },
     jumpPage: function(event) {
-      if (event.key == "Enter") {
+      if (event.key == "Enter" && this.pageIndex != this.jumpPageIndex) {
         this.pageIndex = this.jumpPageIndex;
         this.jumpPageIndex = null;
+        this.$emit("jumpPage", this.pageIndex);
       }
     }
   }

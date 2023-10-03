@@ -11,18 +11,19 @@
           {{name}}
           </option>
         </select>
-        <div class="system-choice" v-for="(f, index) in systemFilters" :key="index">
-          <input type="radio" v-model="systemChecked" :value="'system-choice' + index" :id="'system-choice' + index"/>
-          <label :for="'system-choice' + index">{{f}}</label>
+        <div class="system-choice" v-for="(f, key) in systemFilters" :key="key">
+          <input type="radio" v-model="filterSelected" :value="key" :id="'filter-'+key"/>
+          <label :for="'filter-'+key">{{f}}</label>
         </div>
       </div>
       <div class="system-data">
         <div
           class="device-cell"
-          v-for="(device, dIndex) in deviceData"
+          v-for="(device, dIndex) in displayData"
           :key="dIndex"
           :id="'device-' + dIndex"
           :class="deviceStatusClass(device)"
+          v-show="filterSelected == 'all' || filterSelected == device.status"
         >
           <div class="banner">
             <div class="title">
@@ -49,7 +50,13 @@
       </div>
     </div>
     <div class="empty-flex-div"></div>
-    <page-switching v-bind="pageSwitchingProps"/>
+    <page-switching 
+      :initialPage="initialPage"
+      :totalPage="totalPage"
+      :style="pageSwitchingStyle"
+      ref="pageSwitchingComp"
+      @jumpPage="jumpPage"
+    />
   </div>
 </template>
 
@@ -77,28 +84,20 @@ const titlePanelProps = {
   }
 };
 
-const pageSwitchingProps = {
-  initialPage: 1,
-  totalPage: 3,
-  style: {
-    width: "100%",
-    height: "30px",
-    marginBottom: "10px",
-    marginRight: "10px",
-    justifyContent: "flex-end",
-    flex: "none"
-  }
-};
-
 const subSystems = {
   sys1: "某某某某系统一",
   sys2: "某某某某系统二"
 };
-const systemFilters = ["全部", "正常", "报警", "离线"];
+const systemFilters = {
+  all: "全部", 
+  normal: "正常", 
+  warning: "报警",
+  offline: "离线"
+};
 
 function getDeviceData() {
-  return [...new Array(8)].map((i) => {
-    return {
+  return [...new Array(32)].map((i) => {
+    let temp = {
       serialNumber: "10034561223456",
       location: "设备位置有点长有点长有点长",
       status: Math.random() > 0.9 ? "offline":"normal",
@@ -110,24 +109,66 @@ function getDeviceData() {
         };
       })
     }; 
+    if (temp.status == "normal") {
+      temp.status = temp.data.some((item) => item.status == "warning") ? "warning" : "normal";
+    }
+    return temp;
   });
 }
+
+const deviceData = getDeviceData();
+const normalData = deviceData.filter((d) => d.status == "normal");
+const offlineData = deviceData.filter((d) => d.status == "offline");
+const warningData = deviceData.filter((d) => d.status == "warning");
+const dataAlternatives = {
+  all: deviceData,
+  normal: normalData,
+  offline: offlineData,
+  warning: warningData
+};
+const displayWindowSize = 8;
+
+/*const pageSwitchingProps = ref({*/
+  /*initialPage: 1,*/
+  /*totalPage: Math.ceil(deviceData.length / displayWindowSize),*/
+  /*style: {*/
+    /*width: "100%",*/
+    /*height: "30px",*/
+    /*marginBottom: "10px",*/
+    /*marginRight: "10px",*/
+    /*justifyContent: "flex-end",*/
+    /*flex: "none"*/
+  /*}*/
+/*});*/
+
 
 export default {
   setup: function() {
     return {
       titlePanelProps,
-      pageSwitchingProps,
       subSystems,
       systemFilters,
-      systemChecked: ref("system-choice0"),
+      pageSwitchingStyle: {
+        width: "100%",
+        height: "30px",
+        marginBottom: "10px",
+        marginRight: "10px",
+        justifyContent: "flex-end",
+        flex: "none"
+      },
+      filterSelected: ref("all"),
       currSystem: ref("sys1"),
     }
   },
   data: function() {
     return {
-      deviceData: getDeviceData()
+      displayData: dataAlternatives[this.filterSelected].slice(0, displayWindowSize),
+      initialPage: 1,
+      totalPage: Math.ceil(dataAlternatives["all"].length / displayWindowSize)
     }
+  },
+  computed: {
+    dataSource: () => dataAlternatives[this.filterSelected]
   },
   mounted: function() {
     /*setInterval(() => this.deviceData = getDeviceData(), 3000);*/
@@ -135,6 +176,12 @@ export default {
   components: {
     TitlePanel,
     PageSwitching
+  },
+  watch: {
+    filterSelected: function(newVal) {
+      this.totalPage = Math.ceil(dataAlternatives[newVal].length / displayWindowSize);
+      this.displayData = dataAlternatives[newVal].slice(0, displayWindowSize);
+    }
   },
   methods: {
     deviceStatusClass: function(device) {
@@ -145,6 +192,11 @@ export default {
     cellStatusClass: function(cell) {
       return cell.status + "-cell";
     },
+    jumpPage: function(pageIndex) {
+      const start = (pageIndex - 1) * displayWindowSize;
+      const end = start + displayWindowSize;
+      this.displayData = dataAlternatives[this.filterSelected].slice(start, end)
+    }
   }
 }
 </script>

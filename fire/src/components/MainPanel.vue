@@ -55,7 +55,7 @@ export default {
     return {
       systems,
       systemTabs,
-      currSystem: ref("ElecFireSystem"),
+      currSystem: ref("AutoFireAlarm"),
       systemPanelProps
     }
   },
@@ -77,7 +77,6 @@ export default {
   },
   watch: {
     currSystem: function(newVal) {
-      console.log("currSystem changed to " + newVal);
     }
   }
 }
