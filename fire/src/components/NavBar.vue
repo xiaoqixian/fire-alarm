@@ -11,7 +11,7 @@
           ref="topTabs"
           @click="tabSelected" 
           @mouseover="topTabHoverOver" 
-          @mouseleave="HoverLeave" 
+          @mouseleave="hoverLeave" 
           :style="currTab == key ? activeTopTabStyle : inactiveTopTabStyle"
           >
           {{name}}
@@ -93,11 +93,9 @@ export default {
     },
     tabSelected: function(event) {
       this.$emit("TabSelected", event.target.id);
-      /*const currTabObject = this.$refs.topTabs.filter((t) => t.id == this.currTab)[0];*/
-      const newTabObject = this.$refs.topTabs.filter((t) => t.id == event.target.id)[0];
-
-      /*newTabObject.style.backgroundColor = "rgb(0, 4, 22)";*/
-      Object.entries(this.$props.activeTopTabStyle).forEach(([v, k]) => newTabObject.style[k] = v);
+      /*const newTabObject = this.$refs.topTabs.filter((t) => t.id == event.target.id)[0];*/
+      /*//apply activeTopTabStyle to this new tab object*/
+      /*Object.entries(this.$props.activeTopTabStyle).forEach(([v, k]) => newTabObject.style[k] = v);*/
 
       this.currTab = event.target.id;
     },

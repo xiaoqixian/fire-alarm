@@ -1,3 +1,26 @@
+<template>
+  <div class="top-banner">
+    <div class="left">
+      <div class="clock">
+        <div class="time">{{ time }}</div>
+        <div class="date"> {{ date }} | {{ weekday }}</div>
+      </div>
+      <img class="weather-img" src="../assets/smallrain.png"/>
+      <div class="weather">
+        <div class="temperature">{{ temperature }}</div>
+        <div class="pm">{{ PM_value }}</div>
+      </div>
+    </div>
+    <div class="mid">
+      智慧安消防一体化监管系统
+    </div>
+    <div class="right">
+      <img src="../assets/notifications.png"/>
+      <img src="../assets/toggle.png"/>
+      <img src="../assets/default_avatar.png"/>
+    </div>
+  </div>
+</template>
 
 <script>
 import {ref} from 'vue';
@@ -31,76 +54,51 @@ export default {
 
 </script>
 
-<template>
-  <div id="top-banner">
-    <div class="left">
-      <div id="clock">
-        <div id="time">{{ time }}</div>
-        <div id="date"> {{ date }} | {{ weekday }}</div>
-      </div>
-      <img id="weather-img" src="../assets/smallrain.png"/>
-      <div id="weather">
-        <div id="temperature">{{ temperature }}</div>
-        <div id="pm">{{ PM_value }}</div>
-      </div>
-    </div>
-    <div class="mid">
-      智慧安消防一体化监管系统
-    </div>
-    <div class="right">
-      <img src="../assets/notifications.png"/>
-      <img src="../assets/toggle.png"/>
-      <img src="../assets/default_avatar.png"/>
-    </div>
-  </div>
-</template>
-
 <style>
-#top-banner {
+.top-banner {
   display: flex;
-  height: 70px;
   flex: initial;
   width: 100%;
 }
-#top-banner > .left {
+.top-banner > .left {
   display: flex;
   flex: initial;
 }
-#clock {
+.clock {
   margin-right: 10px;
 }
-#time {
+.time {
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   text-align: center;
 }
-#date {
+.date {
   font-size: 15px;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
-#weather-img {
+.weather-img {
     height: 80%;
 }
-#weather {
+.weather {
   flex: flex-start;
 }
-#temperature {
+.temperature {
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   padding-bottom: 3px; 
 }
-#pm {
+.pm {
   font-size: 15px;
   font-family: Arial, Helvetica, sans-serif;
   border-top: 1px solid white;
 }
 
-#top-banner > .mid {
+.top-banner > .mid {
   flex: auto;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-size: 30px;
   text-align: center;
 }
 
-#top-banner > .right {
+.top-banner > .right {
   display: flex;
   flex: initial;
   height: 50%;
@@ -108,7 +106,7 @@ export default {
   justify-content: flex-end;
   align-items: center;
 }
-#top-banner .right img {
+.top-banner .right img {
   flex: initial;
   width: 50%;
   height: 50%;

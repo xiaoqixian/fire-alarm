@@ -23,7 +23,6 @@
           :key="dIndex"
           :id="'device-' + dIndex"
           :class="deviceStatusClass(device)"
-          v-show="filterSelected == 'all' || filterSelected == device.status"
         >
           <div class="banner">
             <div class="title">

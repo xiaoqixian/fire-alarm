@@ -8,7 +8,7 @@
       </div>
     </div>
 
-    <nav-bar class="nav-bar" :tabs="systemTabs" :initTab="currSystem" @TabSelected="(newSystem) => currSystem=newSystem"></nav-bar>
+    <nav-bar class="nav-bar" :tabs="systemTabs" :initTab="currSystem" @TabSelected="TabSelected"></nav-bar>
 
     <component :is="systems[currSystem]" class="system-panel" v-bind="systemPanelProps"></component>
   </div>
@@ -21,7 +21,7 @@ import NavBar from './NavBar.vue';
 
 import AutoFireAlarm from './AutoFireAlarm.vue';
 import ElecFireSystem from './ElecFireSystem.vue';
-import IndoorHyrant from './IndoorHydrant.vue';
+import IndoorHydrant from './IndoorHydrant.vue';
 import FlammableGasMonitoring from './FlammableGasMonitoring.vue';
 import EmergencyLightsEvacuation from './EmergencyLightsEvacuation.vue';
 import EmergencyBroadcast from './EmergencyBroadcast.vue';
@@ -30,7 +30,7 @@ import VideoMonitoring from './VideoMonitoring.vue';
 const systems = {
   AutoFireAlarm,
   ElecFireSystem,
-  IndoorHyrant,
+  IndoorHydrant,
   FlammableGasMonitoring,
   EmergencyLightsEvacuation,
   EmergencyBroadcast,
@@ -39,7 +39,7 @@ const systems = {
 const systemTabs = {
   "AutoFireAlarm": "火灾自动报警系统",
   "ElecFireSystem": "电气火灾系统",
-  "IndoorHyrant": "室内消火栓系统",
+  "IndoorHydrant": "室内消火栓系统",
   "FlammableGasMonitoring": "消防应急照明和疏散指示",
   "EmergencyLightsEvacuation": "可燃气体监控系统",
   "EmergencyBroadcast": "应急广播系统",
@@ -51,12 +51,18 @@ const systemPanelProps = {
 };
 
 export default {
-  setup: function() {
+  setup: function(props) {
     return {
       systems,
       systemTabs,
-      currSystem: ref("AutoFireAlarm"),
+      currSystem: ref(props.initTab),
       systemPanelProps
+    }
+  },
+  props: {
+    initTab: {
+      type: String,
+      default: "AutoFireAlarm"
     }
   },
   components: {
@@ -64,7 +70,7 @@ export default {
     NavBar,
     AutoFireAlarm,
     ElecFireSystem,
-    IndoorHyrant,
+    IndoorHydrant,
     FlammableGasMonitoring,
     EmergencyLightsEvacuation,
     EmergencyBroadcast,
@@ -73,12 +79,13 @@ export default {
   methods: {
     systemEntrySelected: function(event) {
       this.systemEntryIndex = event.target.id;
+    },
+    TabSelected: function(newSystem) {
+      this.currSystem = newSystem;
+      this.$emit("TabSelected", newSystem);
     }
   },
-  watch: {
-    currSystem: function(newVal) {
-    }
-  }
+  emits: ["TabSelected"]
 }
 </script>
 
@@ -128,6 +135,7 @@ export default {
 }
 
 .system-panel {
+  margin-top: 10px;
   flex: auto;
 }
 </style>

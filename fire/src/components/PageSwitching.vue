@@ -23,6 +23,7 @@
           min="1"
           :max="totalPage"
           v-model="jumpPageIndex"
+          ref="jumpPageComp"
           @keyup="jumpPage"
         />
       </div>
@@ -40,31 +41,36 @@ const enabledColor = 'rgba(255,255,255,0.2)';
 export default {
   name: 'PageSwtiching',
   props: {
-    initialPage: {type: Number,required: true},
+    initialPage: {type: Number,default: 1},
     totalPage: {type: Number, required: true},
   },
   setup: function(props) {
+    const minPage = Math.min(1, props.totalPage);//totalPage can be 0
     return {
+      minPage,
       pageIndex: ref(props.initialPage),
-      prevPageDisabled: ref(props.initialPage == 1),
+      prevPageDisabled: ref(props.initialPage == minPage),
       nextPageDisabled: ref(props.initialPage == props.totalPage),
-      jumpPageIndex: ref(null)
+      jumpPageIndex: ref(null),
     };
   },
   watch: {
     pageIndex: function(newVal) {
-      this.prevPageDisabled = newVal == 1 ? true : false;
+      this.prevPageDisabled = newVal == this.minPage ? true : false;
       this.nextPageDisabled = newVal == this.$props.totalPage ? true : false;
     },
     totalPage: function(newVal) {
       //when totalPage is altered, it means new pages are inserted
       //so rewind pageindex to 1
-      if (this.pageIndex == 1) {
+      this.minPage = Math.min(1, newVal);
+
+      if (this.pageIndex == this.minPage) {
         this.prevPageDisabled = true;
-        this.nextPageDisabled = newVal == 1 ? true : false;
+        this.nextPageDisabled = newVal == this.minPage ? true : false;
       } else {
-        this.pageIndex = 1;
+        this.pageIndex = this.minPage;
       }
+      this.$refs.jumpPageComp.max = newVal;
     }
   },
   emits: ["jumpPage"],
@@ -78,7 +84,12 @@ export default {
       this.$emit("jumpPage", this.pageIndex);
     },
     jumpPage: function(event) {
-      if (event.key == "Enter" && this.pageIndex != this.jumpPageIndex) {
+      if (
+        event.key == "Enter" && 
+        this.pageIndex != this.jumpPageIndex &&
+        this.jumpPageIndex >= 1 &&
+        this.jumpPageIndex <= this.totalPage
+      ) {
         this.pageIndex = this.jumpPageIndex;
         this.jumpPageIndex = null;
         this.$emit("jumpPage", this.pageIndex);
