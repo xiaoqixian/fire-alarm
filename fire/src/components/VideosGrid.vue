@@ -22,7 +22,6 @@ export default {
           width: "100%",
           height: "30px",
           flex: "none",
-          display: "flex",
           marginBottom: "10px"
         },
         placeholder: "请输入名称/位置",
