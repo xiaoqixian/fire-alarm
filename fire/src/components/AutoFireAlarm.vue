@@ -99,7 +99,8 @@ import PageSwitching from './PageSwitching.vue';
 import OnClickOutside from './OnClickOutside.vue';
 
 function getData(row) {
-  return [...new Array(row)].map((r) => {
+  // eslint-disable-next-line no-unused-vars
+  return [...new Array(row)].map((_) => {
     return {
       unitType: "部件类型部件类型",
       serialNumber: "123571893412312",

@@ -56,14 +56,17 @@
 
 <script>
 const camera_info = Array.from({length: 5}, 
+  // eslint-disable-next-line no-unused-vars
   (_) => {
     return {
       name: "某某某某单位",
       value: Array.from({length: 5}, 
+        // eslint-disable-next-line no-unused-vars
         (_) => {
           return {
             name: "摄像头类型名称",
             value: Array.from({length: 10}, 
+              // eslint-disable-next-line no-unused-vars
               (_) => {
                 return {
                   name: "某某某号楼某某地摄像头"

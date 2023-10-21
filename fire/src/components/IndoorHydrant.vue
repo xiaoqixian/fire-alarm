@@ -384,14 +384,12 @@ export default {
                distance: 5
             },
             axisLabel: {
+              show: false,
               distance: 8
             },
             detail: {
               valueAnimation: true,
               formatter: "{value}"
-            },
-            axisLabel: {
-              show: false
             },
             pointer: {
               width: 3,

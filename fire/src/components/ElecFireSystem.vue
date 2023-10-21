@@ -95,11 +95,13 @@ const systemFilters = {
 };
 
 function getDeviceData() {
+  // eslint-disable-next-line no-unused-vars
   return [...new Array(32)].map((i) => {
     let temp = {
       serialNumber: "10034561223456",
       location: "设备位置有点长有点长有点长",
       status: Math.random() > 0.9 ? "offline":"normal",
+      // eslint-disable-next-line no-unused-vars
       data: [...new Array(6)].map((j) => {
         return { 
           name:"A相电压", 

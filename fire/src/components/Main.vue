@@ -26,7 +26,7 @@ function tabSideWindowRegistry(tab) {
     default: 
       return ["video-grid", "warning-table"]
   }
-};
+}
 
 export default {
   name: 'MainWindow',

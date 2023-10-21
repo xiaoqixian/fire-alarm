@@ -35,9 +35,6 @@
 <script>
 import {ref} from 'vue';
 
-const disabledColor = 'rgba(255,255,255,0.6)';
-const enabledColor = 'rgba(255,255,255,0.2)';
-
 export default {
   name: 'PageSwtiching',
   props: {

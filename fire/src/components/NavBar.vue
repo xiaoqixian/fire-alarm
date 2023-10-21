@@ -66,16 +66,20 @@ export default {
     },
     activeTopTabStyle: {
       type: Object,
-      default: {
-        backgroundColor: "rgb(0, 4, 22)",
-        borderTop: "1px solid rgb(71, 105, 248)"
+      default: function() {
+        return {
+          backgroundColor: "rgb(0, 4, 22)",
+          borderTop: "1px solid rgb(71, 105, 248)"
+        }
       }
     },
     inactiveTopTabStyle: {
       type: Object,
-      default: {
-        backgroundColor: "transparent",
-        cursor: "pointer"
+      default: function() {
+        return {
+          backgroundColor: "transparent",
+          cursor: "pointer"
+        }
       }
     }
   },
@@ -87,6 +91,7 @@ export default {
   },
   emits: ["TabSelected"],
   methods: {
+    // eslint-disable-next-line no-unused-vars
     toggleAction: function(_) {
       this.$refs.fullTable.style.height = !this.toggled ? `${this.height}px` : "0px";
       setTimeout(() => this.toggled = !this.toggled, 300);
